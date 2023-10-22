@@ -1,14 +1,23 @@
 #include<iostream>
+#include<limits>
 using namespace std;
 int main()
 {
 int k, i = 1, sum_k = 0, number;
-cout << " Enter the amount of integers to sum = "; cin >> k;
-if (k==0) {
-	cout << " The sum of 0 is equal to 0 " << endl;
-	return 0;
-	}
- 
+cout << " Enter the amount of integers to sum = ";
+cin>>k;
+while(true)
+{
+if(cin.fail())
+{
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(),'\n');
+cout<<"You have entered wrong input"<<endl;
+cin>>k;
+}
+if(!cin.fail())
+break;
+}
 do {
 cout << "Enter integer nr. " << i << ": ";
 cin >> number;
@@ -17,6 +26,9 @@ sum_k += number; i++;
 cout << " The total sum of " << k << " integers is: " << sum_k;
 return 0;
 }
+
+
+
 
 
 
